@@ -6,7 +6,8 @@ class Board extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            spaces: boardStates
+            spaces: boardStates,
+            gameStatus : 0
         }
     }
     
@@ -18,19 +19,12 @@ class Board extends Component {
                 if(space.found){
                     return;
                 }
+                console.log(this.state.gameStatus);
                 space.found = true;
-                switch(space.squareState){
-                    case -1:
-                        break;
-                    case 0:
-                        break;
-                    case 1:
-                        break;
-                }
+                this.props.changeGameState(space.squareState)
             }
         }
         this.setState({spaces : nuBoardSpaces})
-        
     }
     
     render() {
